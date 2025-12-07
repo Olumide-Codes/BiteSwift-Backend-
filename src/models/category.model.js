@@ -3,13 +3,16 @@ const mongoose = require('mongoose');
 const categorySchema = new mongoose.Schema({
   name: {
     type: String,
-    unique: true,
     required: true,
+    trim: true,
+    unique: true,  // prevent duplicate names
   },
   image: {
-    type: String,
+    type: String, // URL or path to image
     required: true,
   },
-}, { timestamps: true });
+}, {
+  timestamps: true,
+});
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('Category', categorySchema);

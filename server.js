@@ -4,6 +4,9 @@ const cors = require('cors');
 const helmet = require('helmet');
 const mongoose = require('mongoose');
 const userRoute = require('./src/routes/user.route.js');
+const categoryRoute = require('./src/routes/category.route.js');
+const restaurantRoute = require('./src/routes/restaurant.route.js');
+const foodItemRoute = require('./src/routes/foodItem.route.js'); 
 
 const app = express();
 
@@ -36,7 +39,10 @@ app.use(helmet());
 app.use(express.json());
 
 // --- Routes ---
-app.use('/api', userRoute);
+app.use('/api/', userRoute);
+app.use('/api/categories', categoryRoute);
+app.use('/api/restaurants', restaurantRoute);
+app.use('/api/food-items', foodItemRoute); 
 
 app.get('/', (req, res) => {
   res.send('Welcome to the API');
